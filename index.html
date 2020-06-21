@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Carculadora</title>
+</head>
+<body>
+    <div class="calculator">
+        <div>
+            <input type="text">
+            <button onclick="number1(); enable()">1</button>
+            <button onclick="number2(); enable()">2</button>
+            <button onclick="number3(); enable()">3</button>
+            <button onclick="number4(); enable()">4</button>
+            <button onclick="number5(); enable()">5</button>
+            <button onclick="number6(); enable()">6</button>
+            <button onclick="number7(); enable()">7</button>
+            <button onclick="number8(); enable()">8</button>
+            <button onclick="number9(); enable()">9</button>
+            <button id="disable6" onclick="slash(); disable()">.</button>
+            <button onclick="number0(); enable()"> 0 </button>
+            <button id="disable5" onclick="calculate();">=</button>
+        </div>
+        <div>
+            <button onclick="empty()">C</button>
+            <button id="disable1" onclick="plus(); disable()">&plus;</button>
+            <button id="disable2" onclick="minus(); disable()">&minus;</button>
+            <button id="disable3" onclick="times(); disable()">&times;</button>
+            <button id="disable4" onclick="div(); disable()">&div;</button>
+        </div>
+    </div>
+    <script>
+let input = document.querySelector('.calculator input');
+let button = document.querySelector('.calculator button');
+
+disable();
+
+function number1() { input.value += '1'; }
+function number2() { input.value += '2'; }
+function number3() { input.value += '3'; }
+function number4() { input.value += '4'; }
+function number5() { input.value += '5'; }
+function number6() { input.value += '6'; }
+function number7() { input.value += '7'; }
+function number8() { input.value += '8'; }
+function number9() { input.value += '9'; }
+function number0() { input.value += '0'; }
+function slash () { input.value += '.'; }
+function empty() {
+    input.value = '';
+    disable();
+}
+
+function plus() { input.value += '+'; }
+function minus() { input.value += '-'; }
+function times() { input.value += '*'; }
+function div() { input.value += '/'; }
+function calculate () {
+    if(input.value != 0) {
+        let total = eval(input.value);
+        input.value = total;
+    }
+}
+
+function enable () {
+    for(let i = 1; i < 7; i++) {
+        document.getElementById(`disable${i}`).disabled = false;
+    }
+}
+
+function disable () {
+    for(let i = 1; i < 7; i++) {
+        document.getElementById(`disable${i}`).disabled = true;
+    }
+}
+    </script>
+</body>
+</html>
